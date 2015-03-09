@@ -13,7 +13,7 @@
 static const NSInteger kNXTSegmentedControlDefaultHandleInset = 3;
 static const CGFloat kNXTSegmentedControlDefaultWidth = 200.0f;
 static const CGFloat kNXTSegmentedControlDefaultHeight = 33.0f;
-static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.15f;
+static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f;
 
 @interface NXTSegmentedControl () {
     UIColor *_thumbColor;
