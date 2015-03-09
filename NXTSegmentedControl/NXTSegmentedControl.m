@@ -13,7 +13,7 @@
 static const NSInteger kNXTSegmentedControlDefaultHandleInset = 3;
 static const CGFloat kNXTSegmentedControlDefaultWidth = 200.0f;
 static const CGFloat kNXTSegmentedControlDefaultHeight = 33.0f;
-static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 2.15f;
+static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.15f;
 
 @interface NXTSegmentedControl () {
     UIColor *_thumbColor;
@@ -30,7 +30,7 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 2.15f
 @property (nonatomic, strong) NSMutableArray *labels;
 
 @property (nonatomic, strong) CALayer *maskLayer;
-@property (nonatomic, strong) CALayer *thumbShowLayer;
+@property (nonatomic, strong) UIView *thumbShowLayer;
 
 @property (nonatomic, strong) NSMutableDictionary *titleTextAttributes;
 
@@ -200,7 +200,7 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 2.15f
     [self _buildShowLayer];
     
     self.selectedLabelContainer.layer.mask = self.maskLayer;
-    [self.maskLayer addSublayer:self.thumbShowLayer];
+    [self.maskLayer addSublayer:self.thumbShowLayer.layer];
 }
 
 - (void)_buildThumb {
@@ -223,14 +223,14 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 2.15f
 }
 
 - (void)_buildShowLayer {
-    self.thumbShowLayer = [CALayer layer];
-    self.thumbShowLayer.backgroundColor = [UIColor greenColor].CGColor;
+    self.thumbShowLayer = [UIView new];
+    self.thumbShowLayer.backgroundColor = [UIColor greenColor];
 }
 
 - (void)_layoutMasks {
     self.maskLayer.frame = self.selectedLabelContainer.bounds;
     self.thumbShowLayer.frame = [self _thumbRect];
-    self.thumbShowLayer.cornerRadius = CGRectGetHeight([self _thumbRect]) / 2.0f;
+    self.thumbShowLayer.layer.cornerRadius = CGRectGetHeight([self _thumbRect]) / 2.0f;
 }
 
 - (void)_buildSegmentsArrayForItems:(NSArray *)items {
@@ -358,11 +358,7 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 2.15f
 
 - (void)_moveThumbToNewFrame:(CGRect)newThumbFrame {
     self.thumb.frame = newThumbFrame;
-    
-    [CATransaction begin];
-    [CATransaction setDisableActions: YES];
     self.thumbShowLayer.frame = newThumbFrame;
-    [CATransaction commit];
 }
 
 - (void)_addLabelWithText:(NSString *)title atIndex:(NSUInteger)index {
@@ -426,45 +422,27 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 2.15f
     CGRect newSelectionRect = [self _rectForSegmentAtIndex:index];
     CGPoint newCenter = [self _centerForSegmentAtIndex:index];
     if (animated) {
-//        [UIView
-//         animateWithDuration:kNXTSegmentedControlDefaultAnimationDuration
-//         delay:0.0f
-//         usingSpringWithDamping:1.0f
-//         initialSpringVelocity:0.0f
-//         options:0
-//         animations:^{
-//             self.thumb.center = newCenter;
-//             self.thumbShowLayer.position = newCenter;
-//         }
-//         completion:^(BOOL finished) {}];
-        
-        [CATransaction begin];
-
-        
-        CABasicAnimation *thumbAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-        thumbAnimation.fromValue = [NSValue valueWithCGPoint:self.thumb.center];
-        thumbAnimation.toValue = [NSValue valueWithCGPoint:newCenter];
-        thumbAnimation.duration = kNXTSegmentedControlDefaultAnimationDuration;
-        thumbAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-        
+        CABasicAnimation *thumbAnimation = [self _thumbUpdateAnimationWithFromCenter:self.thumb.center toCenter:newCenter];
         [self.thumb.layer addAnimation:thumbAnimation forKey:@"basic"];
         self.thumb.layer.position = newCenter;
         
-        CABasicAnimation *maskAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-        maskAnimation.fromValue = [NSValue valueWithCGPoint:self.thumb.center];
-        maskAnimation.toValue = [NSValue valueWithCGPoint:newCenter];
-        maskAnimation.duration = kNXTSegmentedControlDefaultAnimationDuration;
-        maskAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-        
-        [self.thumbShowLayer addAnimation:maskAnimation forKey:@"position"];
-        self.thumbShowLayer.position = newCenter;
-        
-        [CATransaction commit];
-
-        
+        CABasicAnimation *maskAnimation = [self _thumbUpdateAnimationWithFromCenter:self.thumbShowLayer.center toCenter:newCenter];
+        [self.thumbShowLayer.layer addAnimation:maskAnimation forKey:@"position"];
+        self.thumbShowLayer.layer.position = newCenter;
     } else {
         [self _moveThumbToNewFrame:newSelectionRect];
     }
+}
+
+- (CABasicAnimation *)_thumbUpdateAnimationWithFromCenter:(CGPoint)fromCenter
+                                                 toCenter:(CGPoint)toCenter {
+    CABasicAnimation *thumbAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    thumbAnimation.fromValue = [NSValue valueWithCGPoint:fromCenter];
+    thumbAnimation.toValue = [NSValue valueWithCGPoint:toCenter];
+    thumbAnimation.duration = kNXTSegmentedControlDefaultAnimationDuration;
+    thumbAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    return thumbAnimation;
 }
 
 - (CGRect)_rectForSelectedSegment {
