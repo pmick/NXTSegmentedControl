@@ -20,18 +20,13 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
 }
 
 @property (nonatomic, strong) NSMutableArray *segmentTitles;
-
 @property (nonatomic, strong) UIView *thumb;
-
 @property (nonatomic, strong) UIView *selectedLabelContainer;
 @property (nonatomic, strong) UIView *labelContainer;
-
 @property (nonatomic, strong) NSMutableArray *selectedLabels;
 @property (nonatomic, strong) NSMutableArray *labels;
-
 @property (nonatomic, strong) CALayer *maskLayer;
 @property (nonatomic, strong) UIView *thumbShowLayer;
-
 @property (nonatomic, strong) NSMutableDictionary *titleTextAttributes;
 
 @end
@@ -47,11 +42,12 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     }
     
     _segmentTitles = [items mutableCopy];
+    _titleTextAttributes = [NSMutableDictionary dictionary];
+
     [self _setup];
     [self _buildSegmentsArrayForItems:items];
     
     self.frame = CGRectMake(0, 0, kNXTSegmentedControlDefaultWidth, kNXTSegmentedControlDefaultHeight);
-    _titleTextAttributes = [NSMutableDictionary dictionary];
     
     return self;
 }
@@ -149,7 +145,6 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     
     return shouldBeginTouches;
 }
-
 
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     [super continueTrackingWithTouch:touch withEvent:event];
@@ -272,7 +267,6 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     _thumb.layer.cornerRadius = CGRectGetHeight([self _thumbRect]) / 2.0f;
 }
 
-
 - (CGRect)_rectForLabelAtIndex:(NSUInteger)index
               withSegmentWidth:(CGFloat)segmentWidth
                   boundingRect:(CGRect)boundingRect {
@@ -290,7 +284,6 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     [self.tintColor setFill];
     [backgroundPath fill];
 }
-
 
 - (BOOL)_isValidTouchPoint:(CGPoint)touchPoint {
     BOOL touchedSelectedSegment = CGRectContainsPoint([self _rectForSelectedSegment], touchPoint);
