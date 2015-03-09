@@ -1,0 +1,500 @@
+//
+//  NXTSegmentedControl.m
+//
+//
+//  Created by Patrick Mick on 6/13/14.
+//
+//
+
+#import "NXTSegmentedControl.h"
+
+#define DEFAULT_THUMB_COLOR [UIColor whiteColor]
+
+static const NSInteger kNXTSegmentedControlDefaultHandleInset = 3;
+static const CGFloat kNXTSegmentedControlDefaultWidth = 200.0f;
+static const CGFloat kNXTSegmentedControlDefaultHeight = 33.0f;
+static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 2.15f;
+
+@interface NXTSegmentedControl () {
+    UIColor *_thumbColor;
+}
+
+@property (nonatomic, strong) NSMutableArray *segmentTitles;
+
+@property (nonatomic, strong) UIView *thumb;
+
+@property (nonatomic, strong) UIView *selectedLabelContainer;
+@property (nonatomic, strong) UIView *labelContainer;
+
+@property (nonatomic, strong) NSMutableArray *selectedLabels;
+@property (nonatomic, strong) NSMutableArray *labels;
+
+@property (nonatomic, strong) CALayer *maskLayer;
+@property (nonatomic, strong) CALayer *thumbShowLayer;
+
+@property (nonatomic, strong) NSMutableDictionary *titleTextAttributes;
+
+@end
+
+@implementation NXTSegmentedControl
+
+#pragma mark - Lifecycle
+
+- (instancetype)initWithItems:(NSArray *)items {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    _segmentTitles = [items mutableCopy];
+    [self _setup];
+    [self _buildSegmentsArrayForItems:items];
+    
+    self.frame = CGRectMake(0, 0, kNXTSegmentedControlDefaultWidth, kNXTSegmentedControlDefaultHeight);
+    _titleTextAttributes = [NSMutableDictionary dictionary];
+    
+    return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [self _layoutLabels];
+    [self _layoutThumb];
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    [self _drawBackgroundWithTintColor];
+}
+
+- (NSUInteger)numberOfSegments {
+    return self.segmentTitles.count;
+}
+
+#pragma mark - Accessors
+
+- (void)setTintColor:(UIColor *)tintColor {
+    [super setTintColor:tintColor];
+    
+    for (UILabel *label in self.selectedLabels) {
+        label.textColor = tintColor;
+    }
+}
+
+- (void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex {
+    _selectedSegmentIndex = selectedSegmentIndex;
+    [self _moveThumbToSelectedSegment:selectedSegmentIndex animated:YES];
+}
+
+- (CGFloat)thumbEdgeInset {
+    if (_thumbEdgeInset <= 0) {
+        return kNXTSegmentedControlDefaultHandleInset;
+    }
+    
+    return _thumbEdgeInset;
+}
+
+- (void)setThumbColor:(UIColor *)thumbColor {
+    _thumbColor = thumbColor;
+    self.thumb.backgroundColor = thumbColor;
+}
+
+- (UIColor *)thumbColor {
+    if (_thumbColor) {
+        return _thumbColor;
+    }
+    
+    return DEFAULT_THUMB_COLOR;
+}
+
+#pragma mark - Public Methods
+
+- (NSString *)titleForSegmentAtIndex:(NSUInteger)segment {
+    return self.segmentTitles[segment];
+}
+
+- (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment {
+    self.segmentTitles[segment] = title;
+    [self _updateLabelWithTitle:title atIndex:segment];
+}
+
+- (NSDictionary *)titleTextAttributesForState:(UIControlState)state {
+    return self.titleTextAttributes[@(state)];
+}
+
+- (void)setTitleTextAttributes:(NSDictionary *)attributes forState:(UIControlState)state {
+    NSParameterAssert(attributes);
+    
+    self.titleTextAttributes[@(state)] = attributes;
+    
+    if (state == UIControlStateNormal) {
+        [self _updateLabels:self.labels withAttributes:attributes];
+        
+        if (!self.titleTextAttributes[@(UIControlStateSelected)]) {
+            [self _updateLabels:self.selectedLabels withAttributes:attributes];
+        }
+    } else if (state == UIControlStateSelected) {
+        [self _updateLabels:self.selectedLabels withAttributes:attributes];
+    }
+}
+
+#pragma mark - Touches
+
+- (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    [super beginTrackingWithTouch:touch withEvent:event];
+    
+    CGPoint touchPoint = [touch locationInView:self];
+    BOOL shouldBeginTouches = [self _isValidTouchPoint:touchPoint];
+    
+    return shouldBeginTouches;
+}
+
+
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    [super continueTrackingWithTouch:touch withEvent:event];
+    
+    CGFloat horizontalDifference = [touch locationInView:self].x - [touch previousLocationInView:self].x;
+    CGRect newThumbFrame = self.thumb.frame;
+    newThumbFrame.origin.x += horizontalDifference;
+    
+    if (![self _isNewThumbFrameValid:newThumbFrame]) {
+        newThumbFrame = [self _validatedThumbFrame:newThumbFrame];
+    }
+    
+    [self _moveThumbToNewFrame:newThumbFrame];
+    
+    return YES;
+}
+
+- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    [super endTrackingWithTouch:touch withEvent:event];
+    
+    NSInteger nearestIndex = [self _nearestIndexForCurrentThumbPosition];
+    
+    if (nearestIndex != self.selectedSegmentIndex) {
+        [self _updateSelectedIndexAndNotify:nearestIndex];
+    } else {
+        [self _moveThumbToSelectedSegment:self.selectedSegmentIndex animated:YES];
+    }
+}
+
+#pragma mark - Private: Setup
+
+- (void)_setup {
+    self.backgroundColor = [UIColor clearColor];
+    
+    _selectedSegmentIndex = 0;
+    
+    _selectedLabels = [NSMutableArray array];
+    _labels = [NSMutableArray array];
+    
+    [self _buildThumb];
+    [self _buildLabelContainers];
+    
+    [self addSubview:self.thumb];
+    [self addSubview:self.labelContainer];
+    [self addSubview:self.selectedLabelContainer];
+    
+    [self _buildMaskLayer];
+    [self _buildShowLayer];
+    
+    self.selectedLabelContainer.layer.mask = self.maskLayer;
+    [self.maskLayer addSublayer:self.thumbShowLayer];
+}
+
+- (void)_buildThumb {
+    _thumb = [UIView new];
+    _thumb.backgroundColor = self.thumbColor;
+    _thumb.userInteractionEnabled = NO;
+}
+
+- (void)_buildLabelContainers {
+    self.selectedLabelContainer = [UIView new];
+    self.selectedLabelContainer.userInteractionEnabled = NO;
+    
+    self.labelContainer = [UIView new];
+    self.labelContainer.userInteractionEnabled = NO;
+}
+
+- (void)_buildMaskLayer {
+    self.maskLayer = [CALayer layer];
+    self.maskLayer.backgroundColor = [[UIColor clearColor] CGColor];
+}
+
+- (void)_buildShowLayer {
+    self.thumbShowLayer = [CALayer layer];
+    self.thumbShowLayer.backgroundColor = [UIColor greenColor].CGColor;
+}
+
+- (void)_layoutMasks {
+    self.maskLayer.frame = self.selectedLabelContainer.bounds;
+    self.thumbShowLayer.frame = [self _thumbRect];
+    self.thumbShowLayer.cornerRadius = CGRectGetHeight([self _thumbRect]) / 2.0f;
+}
+
+- (void)_buildSegmentsArrayForItems:(NSArray *)items {
+    for (NSInteger idx = 0; idx < items.count; idx++) {
+        NSString *title = items[idx];
+        if (![title isKindOfClass:[NSString class]]) {
+            NSAssert(NO, @"Segmented control item must be a string! Item: %@", title);
+        }
+        
+        [self _addLabelWithText:title atIndex:idx];
+    }
+}
+
+#pragma mark - Private: Layout & Calculation
+
+- (void)_layoutLabels {
+    self.selectedLabelContainer.frame = self.bounds;
+    self.labelContainer.frame = self.bounds;
+    
+    CGRect boundingRect = [self _thumbBoundingRect];
+    CGFloat segmentWidth = CGRectGetWidth(boundingRect) / [self numberOfSegments];
+    
+    for (NSUInteger idx = 0; idx < self.selectedLabels.count; idx++) {
+        UILabel *foregroundLabel = self.selectedLabels[idx];
+        UILabel *backgroundLabel = self.labels[idx];
+        
+        CGRect desiredRect = [self _rectForLabelAtIndex:idx
+                                       withSegmentWidth:segmentWidth
+                                           boundingRect:boundingRect];
+        foregroundLabel.frame = desiredRect;
+        backgroundLabel.frame = desiredRect;
+    }
+    
+    [self _layoutMasks];
+}
+
+- (void)_layoutThumb {
+    _thumb.frame = [self _thumbRect];
+    _thumb.layer.cornerRadius = CGRectGetHeight([self _thumbRect]) / 2.0f;
+}
+
+
+- (CGRect)_rectForLabelAtIndex:(NSUInteger)index
+              withSegmentWidth:(CGFloat)segmentWidth
+                  boundingRect:(CGRect)boundingRect {
+    CGFloat x = (segmentWidth * index) + self.thumbEdgeInset;
+    CGFloat y = self.thumbEdgeInset;
+    CGFloat width = segmentWidth;
+    CGFloat height = CGRectGetHeight(boundingRect);
+    return CGRectMake(x, y, width, height);
+}
+
+- (void)_drawBackgroundWithTintColor {
+    UIBezierPath *backgroundPath = [UIBezierPath
+                                    bezierPathWithRoundedRect:self.bounds
+                                    cornerRadius:CGRectGetHeight(self.bounds) / 2.0f];
+    [self.tintColor setFill];
+    [backgroundPath fill];
+}
+
+
+- (BOOL)_isValidTouchPoint:(CGPoint)touchPoint {
+    BOOL touchedSelectedSegment = CGRectContainsPoint([self _rectForSelectedSegment], touchPoint);
+    BOOL touchedOtherSegment = NO;
+    NSInteger selectedIndex = 0;
+    for (NSInteger idx = 0; idx < self.segmentTitles.count; idx++) {
+        if (CGRectContainsPoint([self _rectForSegmentAtIndex:idx], touchPoint) &&
+            idx != self.selectedSegmentIndex) {
+            touchedOtherSegment = YES;
+            selectedIndex = idx;
+            [self _updateSelectedIndexAndNotify:idx];
+            break;
+        }
+    }
+    
+    BOOL shouldBeginTouches = NO;
+    
+    if (touchedSelectedSegment || touchedOtherSegment) {
+        shouldBeginTouches = YES;
+    }
+    return shouldBeginTouches;
+}
+
+- (BOOL)_isNewThumbFrameValid:(CGRect)newThumbRect {
+    return CGRectContainsRect([self _thumbBoundingRect], newThumbRect);
+}
+
+- (CGRect)_validatedThumbFrame:(CGRect)newThumbFrame {
+    CGRect validatedThumbFrame = newThumbFrame;
+    
+    if (CGRectGetMaxX(newThumbFrame) > CGRectGetMaxX([self _thumbBoundingRect])) {
+        CGFloat maxDifference = CGRectGetMaxX(newThumbFrame) - CGRectGetMaxX([self _thumbBoundingRect]);
+        validatedThumbFrame.origin.x -= maxDifference;
+    } else if (CGRectGetMinX(newThumbFrame) < CGRectGetMinX([self _thumbBoundingRect])) {
+        CGFloat minDifference = CGRectGetMinX([self _thumbBoundingRect]) - CGRectGetMinX(newThumbFrame);
+        validatedThumbFrame.origin.x += minDifference;
+    }
+    
+    return validatedThumbFrame;
+}
+
+- (NSInteger)_nearestIndexForCurrentThumbPosition {
+    NSInteger nearestIndex=0;
+    CGFloat smallestDifference = CGFLOAT_MAX;
+    
+    for (NSInteger idx = 0; idx < self.segmentTitles.count; idx++) {
+        CGRect segmentRect = [self _rectForSegmentAtIndex:idx];
+        CGPoint segmentCenter =
+        CGPointMake(CGRectGetMidX(segmentRect), CGRectGetMidY(segmentRect));
+        
+        CGFloat diffX = ABS(_thumb.center.x - segmentCenter.x);
+        
+        if (diffX < smallestDifference) {
+            smallestDifference = diffX;
+            nearestIndex = idx;
+        }
+    }
+    return nearestIndex;
+}
+
+- (void)_updateSelectedIndexAndNotify:(NSInteger)newIndex {
+    self.selectedSegmentIndex = newIndex;
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+- (void)_moveThumbToNewFrame:(CGRect)newThumbFrame {
+    self.thumb.frame = newThumbFrame;
+    
+    [CATransaction begin];
+    [CATransaction setDisableActions: YES];
+    self.thumbShowLayer.frame = newThumbFrame;
+    [CATransaction commit];
+}
+
+- (void)_addLabelWithText:(NSString *)title atIndex:(NSUInteger)index {
+    UILabel *foregroundLabel = [self _labelWithTitle:title textColor:self.tintColor];
+    UILabel *backgroundLabel = [self _labelWithTitle:title textColor:[UIColor whiteColor]];
+    
+    [self.selectedLabels insertObject:foregroundLabel atIndex:index];
+    [self.labels insertObject:backgroundLabel atIndex:index];
+    
+    [self.selectedLabelContainer addSubview:foregroundLabel];
+    [self.labelContainer addSubview:backgroundLabel];
+}
+
+- (UILabel *)_labelWithTitle:(NSString *)title textColor:(UIColor *)textColor {
+    UILabel *label = [UILabel new];
+    label.textColor = textColor;
+    label.text = title;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:13];
+    
+    return label;
+}
+
+- (void)_updateLabelWithTitle:(NSString *)title atIndex:(NSUInteger)index {
+    UILabel *foregroundLabel = self.selectedLabels[index];
+    UILabel *backgroundLabel = self.labels[index];
+    
+    foregroundLabel.text = title;
+    backgroundLabel.text = title;
+}
+
+- (CGRect)_thumbRect {
+    CGRect boundingRect = [self _thumbBoundingRect];
+    
+    CGFloat width;
+    if ([self numberOfSegments] > 0) {
+        width = CGRectGetWidth(boundingRect) / [self numberOfSegments];
+    } else {
+        width = CGRectGetWidth(boundingRect);
+    }
+    
+    CGFloat height = CGRectGetHeight(boundingRect);
+    
+    return CGRectMake(boundingRect.origin.x, boundingRect.origin.y, width,
+                      height);
+}
+
+- (CGRect)_thumbBoundingRect {
+    UIEdgeInsets insets =
+    UIEdgeInsetsMake(self.thumbEdgeInset,
+                     self.thumbEdgeInset,
+                     self.thumbEdgeInset,
+                     self.thumbEdgeInset);
+    CGRect thumbBoundingRect = UIEdgeInsetsInsetRect(self.bounds, insets);
+    
+    return thumbBoundingRect;
+}
+
+- (void)_moveThumbToSelectedSegment:(NSInteger)index animated:(BOOL)animated {
+    
+    CGRect newSelectionRect = [self _rectForSegmentAtIndex:index];
+    CGPoint newCenter = [self _centerForSegmentAtIndex:index];
+    if (animated) {
+//        [UIView
+//         animateWithDuration:kNXTSegmentedControlDefaultAnimationDuration
+//         delay:0.0f
+//         usingSpringWithDamping:1.0f
+//         initialSpringVelocity:0.0f
+//         options:0
+//         animations:^{
+//             self.thumb.center = newCenter;
+//             self.thumbShowLayer.position = newCenter;
+//         }
+//         completion:^(BOOL finished) {}];
+        
+        [CATransaction begin];
+
+        
+        CABasicAnimation *thumbAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+        thumbAnimation.fromValue = [NSValue valueWithCGPoint:self.thumb.center];
+        thumbAnimation.toValue = [NSValue valueWithCGPoint:newCenter];
+        thumbAnimation.duration = kNXTSegmentedControlDefaultAnimationDuration;
+        thumbAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+        
+        [self.thumb.layer addAnimation:thumbAnimation forKey:@"basic"];
+        self.thumb.layer.position = newCenter;
+        
+        CABasicAnimation *maskAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+        maskAnimation.fromValue = [NSValue valueWithCGPoint:self.thumb.center];
+        maskAnimation.toValue = [NSValue valueWithCGPoint:newCenter];
+        maskAnimation.duration = kNXTSegmentedControlDefaultAnimationDuration;
+        maskAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+        
+        [self.thumbShowLayer addAnimation:maskAnimation forKey:@"position"];
+        self.thumbShowLayer.position = newCenter;
+        
+        [CATransaction commit];
+
+        
+    } else {
+        [self _moveThumbToNewFrame:newSelectionRect];
+    }
+}
+
+- (CGRect)_rectForSelectedSegment {
+    return [self _rectForSegmentAtIndex:self.selectedSegmentIndex];
+}
+
+- (CGRect)_rectForSegmentAtIndex:(NSInteger)index {
+    if (index < [self numberOfSegments]) {
+        UILabel *segment = self.selectedLabels[index];
+        return segment.frame;
+    } else {
+        return CGRectZero;
+    }
+}
+
+- (CGPoint)_centerForSegmentAtIndex:(NSUInteger)index {
+    if (index < [self numberOfSegments]) {
+        UILabel *segment = self.selectedLabels[index];
+        return segment.center;
+    } else {
+        return CGPointZero;
+    }
+}
+
+- (void)_updateLabels:(NSArray *)labels withAttributes:(NSDictionary *)attributes {
+    for (UILabel *label in labels) {
+        if (attributes[NSFontAttributeName]) {
+            label.font = attributes[NSFontAttributeName];
+        }
+    }
+}
+
+@end
