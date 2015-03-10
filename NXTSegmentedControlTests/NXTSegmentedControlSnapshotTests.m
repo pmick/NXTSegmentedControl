@@ -10,7 +10,6 @@
 #import <XCTest/XCTest.h>
 #import <FBSnapshotTestCase/FBSnapshotTestCase.h>
 #import "NXTSegmentedControl.h"
-#import <KIF/KIF.h>
 
 @interface NXTSegmentedControlSnapshotTests : FBSnapshotTestCase
 
