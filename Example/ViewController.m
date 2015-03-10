@@ -49,8 +49,8 @@
 #pragma mark - Actions
 
 - (void)segmentedControlValueChanged:(id)sender {
-    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    NSString *t = [NSString stringWithFormat:@"%d", segmentedControl.selectedSegmentIndex];
+    NXTSegmentedControl *segmentedControl = (NXTSegmentedControl *)sender;
+    NSString *t = [NSString stringWithFormat:@"%ld", (long)segmentedControl.selectedSegmentIndex];
     _selectedIndexLabel.text = t;
 }
 

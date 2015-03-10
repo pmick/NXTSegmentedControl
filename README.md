@@ -33,4 +33,14 @@ segmentedControl.tintColor = [UIColor redColor];
 [segmentedControl addTarget:self action:@selector(segmentedControlValueChanged:) forControlEvents:UIControlEventValueChanged];
 [self.view addSubview: segmentedControl];
 ```
+Finally implement your action method.
 
+```objective-c
+- (void)segmentedControlValueChanged:(id)sender {
+    NXTSegmentedControl *segmentedControl = (NXTSegmentedControl *)sender;
+    NSString *t = [NSString stringWithFormat:@"%d", segmentedControl.selectedSegmentIndex];
+    NSLog(t);
+}
+```
+
+NXTSegmentedControl uses the target action pattern just like most controls from UIKit. This creation code should be nearly identical to UISegmentedControl creation.
