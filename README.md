@@ -7,3 +7,9 @@ The styled swipeable segmented control used in Next
 ![NXTSegmentedControl](https://raw.githubusercontent.com/YayNext/NXTSegmentedControl/master/images/demo.gif)
 
 ## Usage
+
+Start by importing the header.
+
+```objective-c
+#import <NXTSegmentedControl/NXTSegmentedControl.h>
+```
