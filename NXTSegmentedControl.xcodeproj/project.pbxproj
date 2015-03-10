@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0F2590C61AAF8F6300F965F9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2590C41AAF8F6300F965F9 /* LaunchScreen.xib */; };
 		0F2590C71AAF8F6300F965F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2590C51AAF8F6300F965F9 /* Main.storyboard */; };
-		0F7A6FE81AA8F165001A020C /* NXTSegmentedControlInteractionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A6FE71AA8F165001A020C /* NXTSegmentedControlInteractionTests.m */; };
 		0FF2770E1AA8DD7500978C6F /* NXTSegmentedControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2770D1AA8DD7500978C6F /* NXTSegmentedControlTests.m */; };
 		0FF277241AA8DDE400978C6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF277191AA8DDE400978C6F /* AppDelegate.m */; };
 		0FF277271AA8DDE400978C6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FF2771F1AA8DDE400978C6F /* Images.xcassets */; };
@@ -35,7 +34,6 @@
 		03502E3AB7DFC94278C81B3D /* Pods-NXTSegmentedControlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests.release.xcconfig"; sourceTree = "<group>"; };
 		0F2590C41AAF8F6300F965F9 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0F2590C51AAF8F6300F965F9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0F7A6FE71AA8F165001A020C /* NXTSegmentedControlInteractionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXTSegmentedControlInteractionTests.m; sourceTree = "<group>"; };
 		0FF276EE1AA8DD7500978C6F /* NXTSegmentedControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXTSegmentedControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF277071AA8DD7500978C6F /* NXTSegmentedControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NXTSegmentedControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF2770C1AA8DD7500978C6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				0FF2770D1AA8DD7500978C6F /* NXTSegmentedControlTests.m */,
 				0FF2770B1AA8DD7500978C6F /* Supporting Files */,
 				0FF2772E1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m */,
-				0F7A6FE71AA8F165001A020C /* NXTSegmentedControlInteractionTests.m */,
 			);
 			path = NXTSegmentedControlTests;
 			sourceTree = "<group>";
@@ -303,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FF2770E1AA8DD7500978C6F /* NXTSegmentedControlTests.m in Sources */,
-				0F7A6FE81AA8F165001A020C /* NXTSegmentedControlInteractionTests.m in Sources */,
 				0FF2772F1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
