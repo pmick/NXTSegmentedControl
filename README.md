@@ -1,6 +1,6 @@
 # NXTSegmentedControl
 
-![Pod Version](https://cocoapod-badges.herokuapp.com/v/NXTSegmentedControl/badge.png)
+![Pod Version](https://cocoapod-badges.herokuapp.com/v/NXTSegmentedControl/badge.png) ![Travis Status](https://travis-ci.org/YayNext/NXTSegmentedControl.svg?branch=master)
 
 The styled swipeable segmented control used in Next
 
