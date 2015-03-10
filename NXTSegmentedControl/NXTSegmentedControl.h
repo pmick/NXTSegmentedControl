@@ -19,7 +19,7 @@
  *  The index of the currently selected segment. A newly created control will
  *  start with a selectedSegmentIndex of 0.
  */
-@property (nonatomic) NSInteger selectedSegmentIndex;
+@property (nonatomic, assign) NSInteger selectedSegmentIndex;
 
 /**
  *  The white space between the edge of the control and the thumb. This value

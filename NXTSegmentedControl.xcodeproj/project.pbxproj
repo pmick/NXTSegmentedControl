@@ -51,7 +51,6 @@
 		0FF2772C1AA8DE2B00978C6F /* NXTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXTSegmentedControl.m; sourceTree = "<group>"; };
 		0FF2772E1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXTSegmentedControlSnapshotTests.m; sourceTree = "<group>"; };
 		11170796F592147F551C00C6 /* Pods-NXTSegmentedControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3719DE8F55D65B56F3C2B2BD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D933B14B37288AFFD654C41E /* libPods-NXTSegmentedControlTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NXTSegmentedControlTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,7 +149,6 @@
 		921DEB3E4FAD4868A8F3E24D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3719DE8F55D65B56F3C2B2BD /* libPods.a */,
 				D933B14B37288AFFD654C41E /* libPods-NXTSegmentedControlTests.a */,
 			);
 			name = Frameworks;

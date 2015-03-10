@@ -19,15 +19,15 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     UIColor *_thumbColor;
 }
 
-@property (nonatomic, strong) NSMutableArray *segmentTitles;
+@property (nonatomic, copy) NSMutableArray *segmentTitles;
 @property (nonatomic, strong) UIView *thumb;
 @property (nonatomic, strong) UIView *selectedLabelContainer;
 @property (nonatomic, strong) UIView *labelContainer;
-@property (nonatomic, strong) NSMutableArray *selectedLabels;
-@property (nonatomic, strong) NSMutableArray *labels;
+@property (nonatomic, copy) NSMutableArray *selectedLabels;
+@property (nonatomic, copy) NSMutableArray *labels;
 @property (nonatomic, strong) CALayer *maskLayer;
 @property (nonatomic, strong) UIView *thumbShowLayer;
-@property (nonatomic, strong) NSMutableDictionary *titleTextAttributes;
+@property (nonatomic, copy) NSMutableDictionary *titleTextAttributes;
 
 @end
 
