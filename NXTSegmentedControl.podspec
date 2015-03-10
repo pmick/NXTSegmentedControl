@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.summary          = "A segmented control replacement that supports swiping, and animated transitions."
   s.homepage         = "https://github.com/YayNext/NXTSegmentedControl"
   
-  s.license          = { :type => "MIT", :file => "LICENSE.md" }
+  s.license          = { :type => "MIT", :file => "LICENSE" }
   
   s.author           = { "Patrick Mick" => "patrickmick1@gmail.com" }
   s.social_media_url = "http://twitter.com/patrickmick"
