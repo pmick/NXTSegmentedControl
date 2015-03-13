@@ -51,7 +51,7 @@
 - (void)segmentedControlValueChanged:(id)sender {
     NXTSegmentedControl *segmentedControl = (NXTSegmentedControl *)sender;
     NSString *t = [NSString stringWithFormat:@"%ld", (long)segmentedControl.selectedSegmentIndex];
-    _selectedIndexLabel.text = t;
+    NSLog(t);
 }
 
 @end

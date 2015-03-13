@@ -93,4 +93,14 @@
     FBSnapshotVerifyLayer(segmentedControl.layer, @"should still bigger text under selection thumb");
 }
 
+- (void)testInheritingGlobalTintColor {
+    UIWindow *window = [UIWindow new];
+    window.tintColor = [UIColor purpleColor];
+    
+    NXTSegmentedControl *segmentedControl = [[NXTSegmentedControl alloc] initWithItems:@[@"test", @"test"]];
+    [window addSubview:segmentedControl];
+    FBSnapshotVerifyLayer(segmentedControl.layer, @"should be tinted correctly");
+}
+
+
 @end

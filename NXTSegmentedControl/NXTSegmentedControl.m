@@ -62,6 +62,13 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     [self _drawBackgroundWithTintColor];
+    
+    
+    // Fixes a bug that prevented labels from getting inherited tintColor from the window
+    // because set tint color is not called.
+    for (UILabel *label in self.selectedLabels) {
+        label.textColor = self.tintColor;
+    }
 }
 
 - (NSUInteger)numberOfSegments {
@@ -69,14 +76,6 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
 }
 
 #pragma mark - Accessors
-
-- (void)setTintColor:(UIColor *)tintColor {
-    [super setTintColor:tintColor];
-    
-    for (UILabel *label in self.selectedLabels) {
-        label.textColor = tintColor;
-    }
-}
 
 - (void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex {
     _selectedSegmentIndex = selectedSegmentIndex;
