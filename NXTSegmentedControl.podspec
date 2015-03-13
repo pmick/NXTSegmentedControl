@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name             = "NXTSegmentedControl"
-  s.version          = "1.0.1"
+  s.version          = "1.0.2"
   s.summary          = "A segmented control replacement that supports swiping, and animated transitions."
   s.homepage         = "https://github.com/YayNext/NXTSegmentedControl"
   
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   
   s.platform         = :ios
   
-  s.source           = { :git => "https://github.com/YayNext/NXTSegmentedControl.git", :tag => "1.0.1" }
+  s.source           = { :git => "https://github.com/YayNext/NXTSegmentedControl.git", :tag => "1.0.2" }
   
   s.source_files     = "Classes", "NXTSegmentedControl/*.{h,m}"
   
