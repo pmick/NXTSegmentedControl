@@ -464,6 +464,9 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
         if (attributes[NSFontAttributeName]) {
             label.font = attributes[NSFontAttributeName];
         }
+        if (attributes[NSForegroundColorAttributeName]) {
+            label.textColor = attributes[NSForegroundColorAttributeName];
+        }
     }
 }
 
