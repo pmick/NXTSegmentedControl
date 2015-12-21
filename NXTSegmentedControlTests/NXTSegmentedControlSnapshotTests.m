@@ -21,7 +21,7 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
-    self.recordMode = NO;
+    self.recordMode = YES;
 }
 
 - (void)testSegmentedControl_CreatedWithoutAFrame_ShouldProvideADefaultFrame {
