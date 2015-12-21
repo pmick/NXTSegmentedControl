@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface NXTSegmentedControl : UIControl
 
 /**
@@ -40,6 +41,18 @@
  *  @return The newly-initialized segmented control.
  */
 - (instancetype)initWithItems:(NSArray *)items;
+
+
+/**
+ *  Adds the ability to change the selected segment without animation. Changing
+ *  the property would always animate.
+ *  
+ *  @param selectedSegmentIndex The selected index to change to
+ *  @param animated Flag that specificies whether or not the movement of 
+ *                  the thumb to the new index should be animated
+ *
+ */
+- (void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex animated:(BOOL)flag;
 
 /**
  *  Replaces the text on a segment already in the segmented control.
