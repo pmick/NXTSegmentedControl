@@ -1,15 +1,10 @@
 PODS:
-  - FBSnapshotTestCase (1.5)
-  - KIF (3.1.2):
-    - KIF/XCTest (= 3.1.2)
-  - KIF/XCTest (3.1.2)
+  - FBSnapshotTestCase (1.8.1)
 
 DEPENDENCIES:
-  - FBSnapshotTestCase (~> 1.5)
-  - KIF (~> 3.1)
+  - FBSnapshotTestCase (= 1.8.1)
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: e2914fbaabccea1dcc773d6a16b1c24540642488
-  KIF: 068074b24dd455025e7f2a488ba4fb07b9ce047b
+  FBSnapshotTestCase: 3dc3899168747a0319c5278f5b3445c13a6532dd
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2
