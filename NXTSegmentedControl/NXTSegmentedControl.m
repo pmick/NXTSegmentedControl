@@ -63,7 +63,6 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     [super drawRect:rect];
     [self _drawBackgroundWithTintColor];
     
-    
     // Fixes a bug that prevented labels from getting inherited tintColor from the window
     // because set tint color is not called.
     for (UILabel *label in self.selectedLabels) {
@@ -78,8 +77,7 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
 #pragma mark - Accessors
 
 - (void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex {
-    _selectedSegmentIndex = selectedSegmentIndex;
-    [self _moveThumbToSelectedSegment:selectedSegmentIndex animated:YES];
+    [self setSelectedSegmentIndex:selectedSegmentIndex animated:YES];
 }
 
 - (CGFloat)thumbEdgeInset {
@@ -104,6 +102,11 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
 }
 
 #pragma mark - Public Methods
+
+- (void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex animated:(BOOL)flag {
+    _selectedSegmentIndex = selectedSegmentIndex;
+    [self _moveThumbToSelectedSegment:selectedSegmentIndex animated:flag];
+}
 
 - (NSString *)titleForSegmentAtIndex:(NSUInteger)segment {
     return self.segmentTitles[segment];
@@ -223,7 +226,8 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
 
 - (void)_layoutMasks {
     self.maskLayer.frame = self.selectedLabelContainer.bounds;
-    self.thumbShowLayer.frame = [self _thumbRect];
+    self.thumbShowLayer.bounds = [self _thumbRect];
+    self.thumbShowLayer.center = [self _centerForSegmentAtIndex:self.selectedSegmentIndex];
     self.thumbShowLayer.layer.cornerRadius = CGRectGetHeight([self _thumbRect]) / 2.0f;
 }
 
@@ -262,7 +266,8 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
 }
 
 - (void)_layoutThumb {
-    _thumb.frame = [self _thumbRect];
+    _thumb.bounds = [self _thumbRect];
+    _thumb.center = [self _centerForSegmentAtIndex:self.selectedSegmentIndex];
     _thumb.layer.cornerRadius = CGRectGetHeight([self _thumbRect]) / 2.0f;
 }
 

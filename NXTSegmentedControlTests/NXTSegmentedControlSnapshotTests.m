@@ -19,7 +19,6 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
     
     self.recordMode = NO;
 }
@@ -102,5 +101,17 @@
     FBSnapshotVerifyLayer(segmentedControl.layer, @"should be tinted correctly");
 }
 
+- (void)testSettingSelectedIndexShouldMoveTheThumb {
+    NXTSegmentedControl *segmentedControl = [[NXTSegmentedControl alloc] initWithItems:@[@"thing1", @"thing2"]];
+    [segmentedControl setSelectedSegmentIndex:1 animated:NO];
+    FBSnapshotVerifyLayer(segmentedControl.layer, @"thumb should be over second segment");
+}
+
+- (void)testChangingTheFrameShouldKeepTheSelectedIndex {
+    NXTSegmentedControl *segmentedControl = [[NXTSegmentedControl alloc] initWithItems:@[@"thing1", @"thing2"]];
+    [segmentedControl setSelectedSegmentIndex:1 animated:NO];
+    segmentedControl.frame = CGRectMake(0, 0, 150, 40);
+    FBSnapshotVerifyLayer(segmentedControl.layer, @"thumb should be over second segment");
+}
 
 @end
