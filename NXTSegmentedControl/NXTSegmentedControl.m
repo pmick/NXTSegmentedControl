@@ -101,6 +101,12 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     return DEFAULT_THUMB_COLOR;
 }
 
+- (void)setTintColor:(UIColor *)tintColor {
+    [super setTintColor:tintColor];
+    
+    [self setNeedsDisplay];
+}
+
 #pragma mark - Public Methods
 
 - (void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex animated:(BOOL)flag {
