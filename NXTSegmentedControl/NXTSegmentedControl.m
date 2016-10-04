@@ -296,11 +296,11 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
 }
 
 - (BOOL)_isValidTouchPoint:(CGPoint)touchPoint {
-    BOOL touchedSelectedSegment = CGRectContainsPoint([self _rectForSelectedSegment], touchPoint);
+    BOOL touchedSelectedSegment = CGRectContainsPoint([self _touchRectForSelectedSegment], touchPoint);
     BOOL touchedOtherSegment = NO;
     NSInteger selectedIndex = 0;
     for (NSInteger idx = 0; idx < self.segmentTitles.count; idx++) {
-        if (CGRectContainsPoint([self _rectForSegmentAtIndex:idx], touchPoint) &&
+        if (CGRectContainsPoint([self _touchRectForSegmentAtIndex:idx], touchPoint) &&
             idx != self.selectedSegmentIndex) {
             touchedOtherSegment = YES;
             selectedIndex = idx;
@@ -340,7 +340,7 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     CGFloat smallestDifference = CGFLOAT_MAX;
     
     for (NSInteger idx = 0; idx < self.segmentTitles.count; idx++) {
-        CGRect segmentRect = [self _rectForSegmentAtIndex:idx];
+        CGRect segmentRect = [self _touchRectForSegmentAtIndex:idx];
         CGPoint segmentCenter =
         CGPointMake(CGRectGetMidX(segmentRect), CGRectGetMidY(segmentRect));
         
@@ -444,18 +444,30 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     thumbAnimation.toValue = [NSValue valueWithCGPoint:toCenter];
     thumbAnimation.duration = kNXTSegmentedControlDefaultAnimationDuration;
     thumbAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    
-    return thumbAnimation;
-}
 
-- (CGRect)_rectForSelectedSegment {
-    return [self _rectForSegmentAtIndex:self.selectedSegmentIndex];
+    return thumbAnimation;
 }
 
 - (CGRect)_rectForSegmentAtIndex:(NSInteger)index {
     if (index < [self numberOfSegments]) {
         UILabel *segment = self.selectedLabels[index];
         return segment.frame;
+    } else {
+        return CGRectZero;
+    }
+}
+
+- (CGRect)_touchRectForSelectedSegment {
+    return [self _touchRectForSegmentAtIndex:self.selectedSegmentIndex];
+}
+
+- (CGRect)_touchRectForSegmentAtIndex:(NSInteger)index {
+    if (index < [self numberOfSegments]) {
+        UILabel *segment = self.selectedLabels[index];
+        CGRect touchRect = segment.frame;
+        touchRect.origin.y = 0;
+        touchRect.size.height = CGRectGetHeight(self.bounds);
+        return touchRect;
     } else {
         return CGRectZero;
     }
