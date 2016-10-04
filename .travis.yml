@@ -2,4 +2,4 @@ language: objective-c
 osx_image: xcode8
 
 script:
-  - xctool -workspace NXTSegmentedControl.xcworkspace -scheme NXTSegmentedControl -sdk iphonesimulator test
+  - xcodebuild test -workspace NXTSegmentedControl.xcworkspace -scheme NXTSegmentedControl -destination 'platform=iOS,name=iPhone 6s'
