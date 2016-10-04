@@ -17,7 +17,8 @@
 		0FF2772A1AA8DDE400978C6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF277231AA8DDE400978C6F /* ViewController.m */; };
 		0FF2772D1AA8DE2B00978C6F /* NXTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2772C1AA8DE2B00978C6F /* NXTSegmentedControl.m */; };
 		0FF2772F1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2772E1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m */; };
-		D11A26F5A90A7E30CA47E4B5 /* libPods-NXTSegmentedControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D933B14B37288AFFD654C41E /* libPods-NXTSegmentedControlTests.a */; };
+		2BD80BA52F3A8E7BAAD372E4 /* libPods-NXTSegmentedControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFDA647356263662F940CF1 /* libPods-NXTSegmentedControl.a */; };
+		CF396697ACE95E4FB1A69C1D /* libPods-NXTSegmentedControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E096BA1FA8F5BB9179249A59 /* libPods-NXTSegmentedControlTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03502E3AB7DFC94278C81B3D /* Pods-NXTSegmentedControlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests.release.xcconfig"; sourceTree = "<group>"; };
+		0BE90AA34AA9F62747AEF400 /* Pods-NXTSegmentedControlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests.release.xcconfig"; sourceTree = "<group>"; };
 		0F2590C41AAF8F6300F965F9 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0F2590C51AAF8F6300F965F9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0FF276EE1AA8DD7500978C6F /* NXTSegmentedControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXTSegmentedControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,8 +49,11 @@
 		0FF2772B1AA8DE2B00978C6F /* NXTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXTSegmentedControl.h; sourceTree = "<group>"; };
 		0FF2772C1AA8DE2B00978C6F /* NXTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXTSegmentedControl.m; sourceTree = "<group>"; };
 		0FF2772E1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXTSegmentedControlSnapshotTests.m; sourceTree = "<group>"; };
-		11170796F592147F551C00C6 /* Pods-NXTSegmentedControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D933B14B37288AFFD654C41E /* libPods-NXTSegmentedControlTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NXTSegmentedControlTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BA3D8E687A6C4D80A2D3506 /* Pods-NXTSegmentedControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControl/Pods-NXTSegmentedControl.debug.xcconfig"; sourceTree = "<group>"; };
+		7CB0FEE8BDB21285B9A1A369 /* Pods-NXTSegmentedControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CAFDA647356263662F940CF1 /* libPods-NXTSegmentedControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NXTSegmentedControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E096BA1FA8F5BB9179249A59 /* libPods-NXTSegmentedControlTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NXTSegmentedControlTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E12B1E3A3885B15CBA9F347F /* Pods-NXTSegmentedControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControl/Pods-NXTSegmentedControl.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BD80BA52F3A8E7BAAD372E4 /* libPods-NXTSegmentedControl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D11A26F5A90A7E30CA47E4B5 /* libPods-NXTSegmentedControlTests.a in Frameworks */,
+				CF396697ACE95E4FB1A69C1D /* libPods-NXTSegmentedControlTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,8 +83,8 @@
 				0FF276F01AA8DD7500978C6F /* NXTSegmentedControl */,
 				0FF2770A1AA8DD7500978C6F /* NXTSegmentedControlTests */,
 				0FF276EF1AA8DD7500978C6F /* Products */,
-				C44A9C37A5643A39ED4B0AF8 /* Pods */,
-				921DEB3E4FAD4868A8F3E24D /* Frameworks */,
+				8DA88C44565C535CA8B0200D /* Pods */,
+				7958B7B9A24D42D2BC2C67A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,19 +140,22 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		921DEB3E4FAD4868A8F3E24D /* Frameworks */ = {
+		7958B7B9A24D42D2BC2C67A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D933B14B37288AFFD654C41E /* libPods-NXTSegmentedControlTests.a */,
+				E096BA1FA8F5BB9179249A59 /* libPods-NXTSegmentedControlTests.a */,
+				CAFDA647356263662F940CF1 /* libPods-NXTSegmentedControl.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C44A9C37A5643A39ED4B0AF8 /* Pods */ = {
+		8DA88C44565C535CA8B0200D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				11170796F592147F551C00C6 /* Pods-NXTSegmentedControlTests.debug.xcconfig */,
-				03502E3AB7DFC94278C81B3D /* Pods-NXTSegmentedControlTests.release.xcconfig */,
+				7CB0FEE8BDB21285B9A1A369 /* Pods-NXTSegmentedControlTests.debug.xcconfig */,
+				0BE90AA34AA9F62747AEF400 /* Pods-NXTSegmentedControlTests.release.xcconfig */,
+				3BA3D8E687A6C4D80A2D3506 /* Pods-NXTSegmentedControl.debug.xcconfig */,
+				E12B1E3A3885B15CBA9F347F /* Pods-NXTSegmentedControl.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -159,9 +167,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FF277111AA8DD7500978C6F /* Build configuration list for PBXNativeTarget "NXTSegmentedControl" */;
 			buildPhases = (
+				852F2D5B54F226CD20240F31 /* [CP] Check Pods Manifest.lock */,
 				0FF276EA1AA8DD7500978C6F /* Sources */,
 				0FF276EB1AA8DD7500978C6F /* Frameworks */,
 				0FF276EC1AA8DD7500978C6F /* Resources */,
+				CF0C8B5A970BC6497F6E90B8 /* [CP] Embed Pods Frameworks */,
+				F3A6F22688EC999858581B9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,11 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FF277141AA8DD7500978C6F /* Build configuration list for PBXNativeTarget "NXTSegmentedControlTests" */;
 			buildPhases = (
-				C760C17860CDB3F21C3652FF /* Check Pods Manifest.lock */,
+				1E62C24C8D6A456508F924EB /* [CP] Check Pods Manifest.lock */,
 				0FF277031AA8DD7500978C6F /* Sources */,
 				0FF277041AA8DD7500978C6F /* Frameworks */,
 				0FF277051AA8DD7500978C6F /* Resources */,
-				AB768D91D8642DCBACF88C44 /* Copy Pods Resources */,
+				2DF876D2CAB397DF2305FF43 /* [CP] Embed Pods Frameworks */,
+				BDFA8C3B1697BC134603FECB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,14 +263,59 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AB768D91D8642DCBACF88C44 /* Copy Pods Resources */ = {
+		1E62C24C8D6A456508F924EB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2DF876D2CAB397DF2305FF43 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		852F2D5B54F226CD20240F31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BDFA8C3B1697BC134603FECB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,19 +323,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C760C17860CDB3F21C3652FF /* Check Pods Manifest.lock */ = {
+		CF0C8B5A970BC6497F6E90B8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NXTSegmentedControl/Pods-NXTSegmentedControl-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3A6F22688EC999858581B9C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NXTSegmentedControl/Pods-NXTSegmentedControl-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -395,6 +467,7 @@
 		};
 		0FF277121AA8DD7500978C6F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BA3D8E687A6C4D80A2D3506 /* Pods-NXTSegmentedControl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
@@ -405,6 +478,7 @@
 		};
 		0FF277131AA8DD7500978C6F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E12B1E3A3885B15CBA9F347F /* Pods-NXTSegmentedControl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
@@ -415,7 +489,7 @@
 		};
 		0FF277151AA8DD7500978C6F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11170796F592147F551C00C6 /* Pods-NXTSegmentedControlTests.debug.xcconfig */;
+			baseConfigurationReference = 7CB0FEE8BDB21285B9A1A369 /* Pods-NXTSegmentedControlTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -436,7 +510,7 @@
 		};
 		0FF277161AA8DD7500978C6F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03502E3AB7DFC94278C81B3D /* Pods-NXTSegmentedControlTests.release.xcconfig */;
+			baseConfigurationReference = 0BE90AA34AA9F62747AEF400 /* Pods-NXTSegmentedControlTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
