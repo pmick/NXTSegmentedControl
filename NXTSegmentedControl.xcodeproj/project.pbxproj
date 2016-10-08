@@ -18,6 +18,8 @@
 		0FF2772D1AA8DE2B00978C6F /* NXTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2772C1AA8DE2B00978C6F /* NXTSegmentedControl.m */; };
 		0FF2772F1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2772E1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m */; };
 		2BD80BA52F3A8E7BAAD372E4 /* libPods-NXTSegmentedControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFDA647356263662F940CF1 /* libPods-NXTSegmentedControl.a */; };
+		CD71A09A1DA9A866003E0E1A /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71A0991DA9A866003E0E1A /* SegmentedControl.swift */; };
+		CD71A09C1DA9ABD5003E0E1A /* SegmentedControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD71A09B1DA9ABD5003E0E1A /* SegmentedControlTests.swift */; };
 		CF396697ACE95E4FB1A69C1D /* libPods-NXTSegmentedControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E096BA1FA8F5BB9179249A59 /* libPods-NXTSegmentedControlTests.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		3BA3D8E687A6C4D80A2D3506 /* Pods-NXTSegmentedControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControl/Pods-NXTSegmentedControl.debug.xcconfig"; sourceTree = "<group>"; };
 		7CB0FEE8BDB21285B9A1A369 /* Pods-NXTSegmentedControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CAFDA647356263662F940CF1 /* libPods-NXTSegmentedControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NXTSegmentedControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD71A0991DA9A866003E0E1A /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		CD71A09B1DA9ABD5003E0E1A /* SegmentedControlTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlTests.swift; sourceTree = "<group>"; };
 		E096BA1FA8F5BB9179249A59 /* libPods-NXTSegmentedControlTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NXTSegmentedControlTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E12B1E3A3885B15CBA9F347F /* Pods-NXTSegmentedControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControl/Pods-NXTSegmentedControl.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +106,7 @@
 			children = (
 				0FF2772B1AA8DE2B00978C6F /* NXTSegmentedControl.h */,
 				0FF2772C1AA8DE2B00978C6F /* NXTSegmentedControl.m */,
+				CD71A0991DA9A866003E0E1A /* SegmentedControl.swift */,
 			);
 			path = NXTSegmentedControl;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 				0FF2770D1AA8DD7500978C6F /* NXTSegmentedControlTests.m */,
 				0FF2770B1AA8DD7500978C6F /* Supporting Files */,
 				0FF2772E1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m */,
+				CD71A09B1DA9ABD5003E0E1A /* SegmentedControlTests.swift */,
 			);
 			path = NXTSegmentedControlTests;
 			sourceTree = "<group>";
@@ -216,9 +222,11 @@
 					0FF276ED1AA8DD7500978C6F = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = U3X9LL8C4R;
+						LastSwiftMigration = 0800;
 					};
 					0FF277061AA8DD7500978C6F = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 0FF276ED1AA8DD7500978C6F;
 					};
 				};
@@ -363,6 +371,7 @@
 				0FF2772A1AA8DDE400978C6F /* ViewController.m in Sources */,
 				0FF277291AA8DDE400978C6F /* main.m in Sources */,
 				0FF277241AA8DDE400978C6F /* AppDelegate.m in Sources */,
+				CD71A09A1DA9A866003E0E1A /* SegmentedControl.swift in Sources */,
 				0FF2772D1AA8DE2B00978C6F /* NXTSegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD71A09C1DA9ABD5003E0E1A /* SegmentedControlTests.swift in Sources */,
 				0FF2770E1AA8DD7500978C6F /* NXTSegmentedControlTests.m in Sources */,
 				0FF2772F1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m in Sources */,
 			);
@@ -470,9 +480,13 @@
 			baseConfigurationReference = 3BA3D8E687A6C4D80A2D3506 /* Pods-NXTSegmentedControl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -481,9 +495,11 @@
 			baseConfigurationReference = E12B1E3A3885B15CBA9F347F /* Pods-NXTSegmentedControl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -491,7 +507,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7CB0FEE8BDB21285B9A1A369 /* Pods-NXTSegmentedControlTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -504,6 +522,8 @@
 				INFOPLIST_FILE = NXTSegmentedControlTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NXTSegmentedControl.app/NXTSegmentedControl";
 			};
 			name = Debug;
@@ -512,7 +532,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0BE90AA34AA9F62747AEF400 /* Pods-NXTSegmentedControlTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -520,6 +542,7 @@
 				INFOPLIST_FILE = NXTSegmentedControlTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NXTSegmentedControl.app/NXTSegmentedControl";
 			};
 			name = Release;
