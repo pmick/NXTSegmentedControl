@@ -423,13 +423,17 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
 - (void)_moveThumbToSelectedSegment:(NSInteger)index animated:(BOOL)animated {
     
     CGRect newSelectionRect = [self _rectForSegmentAtIndex:index];
-    CGPoint newCenter = [self _centerForSegmentAtIndex:index];
     if (animated) {
-        CABasicAnimation *thumbAnimation = [self _thumbUpdateAnimationWithFromCenter:self.thumb.center toCenter:newCenter];
+        CGPoint fromCenter = (self.thumb.layer.presentationLayer
+                              ? self.thumb.layer.presentationLayer.position
+                              : self.thumb.center);
+        CGPoint newCenter = [self _centerForSegmentAtIndex:index];
+        
+        CABasicAnimation *thumbAnimation = [self _thumbUpdateAnimationWithFromCenter:fromCenter toCenter:newCenter];
         [self.thumb.layer addAnimation:thumbAnimation forKey:@"basic"];
         self.thumb.layer.position = newCenter;
         
-        CABasicAnimation *maskAnimation = [self _thumbUpdateAnimationWithFromCenter:self.thumbShowLayer.center toCenter:newCenter];
+        CABasicAnimation *maskAnimation = [self _thumbUpdateAnimationWithFromCenter:fromCenter toCenter:newCenter];
         [self.thumbShowLayer.layer addAnimation:maskAnimation forKey:@"position"];
         self.thumbShowLayer.layer.position = newCenter;
     } else {
