@@ -379,6 +379,7 @@ static const NSTimeInterval kNXTSegmentedControlDefaultAnimationDuration = 0.10f
     UILabel *label = [UILabel new];
     label.textColor = textColor;
     label.text = title;
+    label.contentMode = UIViewContentModeCenter;
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:13];
     
