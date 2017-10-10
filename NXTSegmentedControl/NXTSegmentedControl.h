@@ -48,7 +48,7 @@ IB_DESIGNABLE
  *  the property would always animate.
  *  
  *  @param selectedSegmentIndex The selected index to change to
- *  @param animated Flag that specificies whether or not the movement of 
+ *  @param flag Flag that specificies whether or not the movement of
  *                  the thumb to the new index should be animated
  *
  */
