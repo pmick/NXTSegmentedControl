@@ -2,6 +2,6 @@ language: objective-c
 osx_image: xcode8
 
 script:
-  - xcodebuild test -workspace NXTSegmentedControl.xcworkspace -scheme NXTSegmentedControl -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0'
-  - xcodebuild -workspace NXTSegmentedControl.xcworkspace -scheme NXTSegmentedControlFramework  
+  - xcodebuild test -workspace NXTSegmentedControl.xcworkspace -scheme NXTSegmentedControl -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty
+  - xcodebuild -workspace NXTSegmentedControl.xcworkspace -scheme NXTSegmentedControlFramework | xcpretty
 
