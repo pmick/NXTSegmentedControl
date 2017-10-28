@@ -18,6 +18,9 @@
 		0FF2772D1AA8DE2B00978C6F /* NXTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2772C1AA8DE2B00978C6F /* NXTSegmentedControl.m */; };
 		0FF2772F1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2772E1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m */; };
 		2BD80BA52F3A8E7BAAD372E4 /* libPods-NXTSegmentedControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFDA647356263662F940CF1 /* libPods-NXTSegmentedControl.a */; };
+		A65A1E861F8CC6B50071BFE6 /* NXTSegmentedControlFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A65A1E841F8CC6B50071BFE6 /* NXTSegmentedControlFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A65A1E8A1F8CC6CA0071BFE6 /* NXTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2772C1AA8DE2B00978C6F /* NXTSegmentedControl.m */; };
+		A65A1E8B1F8CC7880071BFE6 /* NXTSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF2772B1AA8DE2B00978C6F /* NXTSegmentedControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF396697ACE95E4FB1A69C1D /* libPods-NXTSegmentedControlTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E096BA1FA8F5BB9179249A59 /* libPods-NXTSegmentedControlTests.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,9 @@
 		0FF2772E1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXTSegmentedControlSnapshotTests.m; sourceTree = "<group>"; };
 		3BA3D8E687A6C4D80A2D3506 /* Pods-NXTSegmentedControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControl/Pods-NXTSegmentedControl.debug.xcconfig"; sourceTree = "<group>"; };
 		7CB0FEE8BDB21285B9A1A369 /* Pods-NXTSegmentedControlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControlTests/Pods-NXTSegmentedControlTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A65A1E821F8CC6B50071BFE6 /* NXTSegmentedControlFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NXTSegmentedControlFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A65A1E841F8CC6B50071BFE6 /* NXTSegmentedControlFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NXTSegmentedControlFramework.h; sourceTree = "<group>"; };
+		A65A1E851F8CC6B50071BFE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAFDA647356263662F940CF1 /* libPods-NXTSegmentedControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NXTSegmentedControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E096BA1FA8F5BB9179249A59 /* libPods-NXTSegmentedControlTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NXTSegmentedControlTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E12B1E3A3885B15CBA9F347F /* Pods-NXTSegmentedControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXTSegmentedControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-NXTSegmentedControl/Pods-NXTSegmentedControl.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +79,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A65A1E7E1F8CC6B50071BFE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -82,6 +95,7 @@
 				0FF277171AA8DDA200978C6F /* Example */,
 				0FF276F01AA8DD7500978C6F /* NXTSegmentedControl */,
 				0FF2770A1AA8DD7500978C6F /* NXTSegmentedControlTests */,
+				A65A1E831F8CC6B50071BFE6 /* NXTSegmentedControlFramework */,
 				0FF276EF1AA8DD7500978C6F /* Products */,
 				8DA88C44565C535CA8B0200D /* Pods */,
 				7958B7B9A24D42D2BC2C67A3 /* Frameworks */,
@@ -93,6 +107,7 @@
 			children = (
 				0FF276EE1AA8DD7500978C6F /* NXTSegmentedControl.app */,
 				0FF277071AA8DD7500978C6F /* NXTSegmentedControlTests.xctest */,
+				A65A1E821F8CC6B50071BFE6 /* NXTSegmentedControlFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,7 +175,28 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A65A1E831F8CC6B50071BFE6 /* NXTSegmentedControlFramework */ = {
+			isa = PBXGroup;
+			children = (
+				A65A1E841F8CC6B50071BFE6 /* NXTSegmentedControlFramework.h */,
+				A65A1E851F8CC6B50071BFE6 /* Info.plist */,
+			);
+			path = NXTSegmentedControlFramework;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A65A1E7F1F8CC6B50071BFE6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65A1E8B1F8CC7880071BFE6 /* NXTSegmentedControl.h in Headers */,
+				A65A1E861F8CC6B50071BFE6 /* NXTSegmentedControlFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		0FF276ED1AA8DD7500978C6F /* NXTSegmentedControl */ = {
@@ -204,6 +240,24 @@
 			productReference = 0FF277071AA8DD7500978C6F /* NXTSegmentedControlTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A65A1E811F8CC6B50071BFE6 /* NXTSegmentedControlFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A65A1E891F8CC6B50071BFE6 /* Build configuration list for PBXNativeTarget "NXTSegmentedControlFramework" */;
+			buildPhases = (
+				A65A1E7D1F8CC6B50071BFE6 /* Sources */,
+				A65A1E7E1F8CC6B50071BFE6 /* Frameworks */,
+				A65A1E7F1F8CC6B50071BFE6 /* Headers */,
+				A65A1E801F8CC6B50071BFE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NXTSegmentedControlFramework;
+			productName = NXTSegmentedControlFramework;
+			productReference = A65A1E821F8CC6B50071BFE6 /* NXTSegmentedControlFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -221,6 +275,10 @@
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 0FF276ED1AA8DD7500978C6F;
 					};
+					A65A1E811F8CC6B50071BFE6 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 0FF276E91AA8DD7500978C6F /* Build configuration list for PBXProject "NXTSegmentedControl" */;
@@ -237,6 +295,7 @@
 			targets = (
 				0FF276ED1AA8DD7500978C6F /* NXTSegmentedControl */,
 				0FF277061AA8DD7500978C6F /* NXTSegmentedControlTests */,
+				A65A1E811F8CC6B50071BFE6 /* NXTSegmentedControlFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -254,6 +313,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0FF277051AA8DD7500978C6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A65A1E801F8CC6B50071BFE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,6 +439,14 @@
 			files = (
 				0FF2770E1AA8DD7500978C6F /* NXTSegmentedControlTests.m in Sources */,
 				0FF2772F1AA8E2F200978C6F /* NXTSegmentedControlSnapshotTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A65A1E7D1F8CC6B50071BFE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65A1E8A1F8CC6CA0071BFE6 /* NXTSegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +598,88 @@
 			};
 			name = Release;
 		};
+		A65A1E871F8CC6B50071BFE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = NXTSegmentedControlFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = module.modulemap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YayNext.NXTSegmentedControlFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A65A1E881F8CC6B50071BFE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = NXTSegmentedControlFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = module.modulemap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YayNext.NXTSegmentedControlFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -550,6 +706,15 @@
 			buildConfigurations = (
 				0FF277151AA8DD7500978C6F /* Debug */,
 				0FF277161AA8DD7500978C6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A65A1E891F8CC6B50071BFE6 /* Build configuration list for PBXNativeTarget "NXTSegmentedControlFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A65A1E871F8CC6B50071BFE6 /* Debug */,
+				A65A1E881F8CC6B50071BFE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

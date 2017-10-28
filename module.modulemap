@@ -1,0 +1,5 @@
+module NXTSegmentedControlFramework {
+  umbrella header "Headers/NXTSegmentedControlFramework.h"
+  requires objc_arc
+}
+
